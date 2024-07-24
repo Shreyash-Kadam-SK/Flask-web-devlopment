@@ -1,2 +1,2 @@
-# Flask-web-devlopment
+# Flask-web-development
 Learning Flask

@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify,send_from_directory
+from flask import Flask, request, jsonify, send_from_directory
 import json
 import os
 
@@ -23,15 +23,20 @@ def update_json():
     # Get the new data from the request
     new_data = request.json
 
-    # Update the data
-    data.update(new_data)
+    # Check if the existing data is a list
+    if isinstance(data, dict) and "Employers" in data:
+        if isinstance(new_data, dict) and "Employers" in new_data:
+            data["Employers"].extend(new_data["Employers"])
+        else:
+            return jsonify({"error": "New data must be a dictionary with 'Employers' key"}), 400
+    else:
+        return jsonify({"error": "Unsupported JSON format"}), 400
 
     # Write the updated data back to the file
     with open(json_file_path, 'w') as f:
         json.dump(data, f, indent=4)
 
     return jsonify(data), 200
-
 
 @app.route("/show")
 def serve_json():

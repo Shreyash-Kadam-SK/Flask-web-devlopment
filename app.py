@@ -15,7 +15,10 @@ def update_json():
 
     # Read the existing data
     with open(json_file_path, 'r') as f:
-        data = json.load(f)
+        try:
+            data = json.load(f)
+        except json.JSONDecodeError:
+            return jsonify({"error": "Invalid JSON format"}), 400
 
     # Get the new data from the request
     new_data = request.json

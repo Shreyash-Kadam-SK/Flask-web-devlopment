@@ -65,6 +65,7 @@ def delete_employee(emp_id):
     with open(json_file_path, 'w') as f:
         json.dump(data, f, indent=4)
 
+
     return jsonify(data), 200
 
 @app.route("/show")
@@ -72,4 +73,4 @@ def serve_json():
     return send_from_directory('templates', 'dump3.json')
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', debug=True)
+    app.run(host='0.0.0.0')

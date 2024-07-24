@@ -7,15 +7,15 @@
             "Full_time": false
         },
         {
-            "emp_id": 2,
-            "name": "Nikhil",
-            "age": 24,
-            "Full_time": true
-        },
-        {
             "emp_id": 3,
             "name": "Alice",
             "age": 30,
+            "Full_time": true
+        },
+        {
+            "emp_id": 2,
+            "name": "Nikhil",
+            "age": 24,
             "Full_time": true
         }
     ]
